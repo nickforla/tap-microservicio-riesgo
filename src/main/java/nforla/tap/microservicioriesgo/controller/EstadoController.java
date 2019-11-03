@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/analizarEstado")
@@ -31,6 +33,15 @@ public class EstadoController {
         logger.info("Solicitud de estado: " + estadoRequest);
         return ResponseEntity.ok().body(servicioEstado.determinarEstadoPeronsa(estadoRequest));
 
+    }
+
+    @GetMapping(path = "/personas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<EstadoRequest>> analizarEstadoPeronas(@RequestBody @Valid List<EstadoRequest> solicitudes){
+
+        logger.info(solicitudes.toString());
+
+        return ResponseEntity.ok().body(new ArrayList<>());
+        
     }
 
 }
