@@ -5,15 +5,14 @@ import nforla.tap.microservicioriesgo.modelo.EstadoRequest;
 import nforla.tap.microservicioriesgo.modelo.EstadoResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -30,7 +29,7 @@ public class EstadoController {
     @GetMapping(path = "/persona", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<EstadoResponse> analizarEstadoPersona(@RequestBody @Valid EstadoRequest estadoRequest) {
 
-        logger.info("Solicitud de estado: " + estadoRequest);
+        logger.info("Solicitud de analisis de estado: " + estadoRequest);
         return ResponseEntity.ok().body(servicioEstado.determinarEstadoPeronsa(estadoRequest));
 
     }
@@ -38,10 +37,9 @@ public class EstadoController {
     @GetMapping(path = "/personas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<EstadoResponse>> analizarEstadoPeronas(@RequestBody @Valid List<EstadoRequest> estadoRequests){
 
-        logger.info(estadoRequests.toString());
+        logger.info("Solicitud de análisis de estado: " + estadoRequests);
 
         return ResponseEntity.ok().body(servicioEstado.determinarEstadoPersonas(estadoRequests));
 
     }
-
 }
