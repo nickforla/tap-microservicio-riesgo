@@ -36,12 +36,12 @@ public class EstadoController {
     }
 
     @GetMapping(path = "/personas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<EstadoRequest>> analizarEstadoPeronas(@RequestBody @Valid List<EstadoRequest> solicitudes){
+    public ResponseEntity<List<EstadoResponse>> analizarEstadoPeronas(@RequestBody @Valid List<EstadoRequest> estadoRequests){
 
-        logger.info(solicitudes.toString());
+        logger.info(estadoRequests.toString());
 
-        return ResponseEntity.ok().body(new ArrayList<>());
-        
+        return ResponseEntity.ok().body(servicioEstado.determinarEstadoPersonas(estadoRequests));
+
     }
 
 }

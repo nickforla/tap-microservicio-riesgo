@@ -5,6 +5,9 @@ import nforla.tap.microservicioriesgo.modelo.EstadoRequest;
 import nforla.tap.microservicioriesgo.modelo.EstadoResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ServicioEstado implements IServicioEstado{
 
@@ -21,6 +24,17 @@ public class ServicioEstado implements IServicioEstado{
         estado = sumaValorSituaciones / estadoRequest.getDeudas().size();
 
         return new EstadoResponse(estadoRequest.getCuil(), estado);
+
+    }
+
+    @Override
+    public List<EstadoResponse> determinarEstadoPersonas(List<EstadoRequest> estadoRequests) {
+
+        List<EstadoResponse> estadoResponses = new ArrayList<>();
+
+        estadoRequests.forEach(estadoRequest -> estadoResponses.add(determinarEstadoPeronsa(estadoRequest)));
+
+        return estadoResponses;
 
     }
 }
