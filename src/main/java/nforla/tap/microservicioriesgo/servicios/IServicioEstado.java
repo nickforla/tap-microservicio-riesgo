@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IServicioEstado {
 
-    EstadoResponse determinarEstadoPeronsa(EstadoRequest estadoRequest);
+    EstadoResponse determinarEstadoPersona(EstadoRequest estadoRequest);
 
     List<EstadoResponse> determinarEstadoPersonas(List<EstadoRequest> estadoRequests);
 

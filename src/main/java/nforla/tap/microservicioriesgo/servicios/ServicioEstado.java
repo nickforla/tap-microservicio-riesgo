@@ -15,7 +15,7 @@ public class ServicioEstado implements IServicioEstado{
      * Determina el estado del solicitante en base a los datos reibidos.
      * */
     @Override
-    public EstadoResponse determinarEstadoPeronsa(EstadoRequest estadoRequest) {
+    public EstadoResponse determinarEstadoPersona(EstadoRequest estadoRequest) {
 
         int sumaValorSituaciones = 0;
         int estado = 1;
@@ -42,7 +42,7 @@ public class ServicioEstado implements IServicioEstado{
 
         List<EstadoResponse> estadoResponses = new ArrayList<>();
 
-        estadoRequests.forEach(estadoRequest -> estadoResponses.add(determinarEstadoPeronsa(estadoRequest)));
+        estadoRequests.forEach(estadoRequest -> estadoResponses.add(determinarEstadoPersona(estadoRequest)));
 
         return estadoResponses;
 

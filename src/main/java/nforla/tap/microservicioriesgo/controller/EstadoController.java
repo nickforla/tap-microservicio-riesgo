@@ -26,7 +26,7 @@ public class EstadoController {
     public ResponseEntity<EstadoResponse> analizarEstadoPersona(@RequestBody @Valid EstadoRequest estadoRequest) {
 
         logger.info("Solicitud de analisis de estado: " + estadoRequest);
-        return ResponseEntity.ok().body(servicioEstado.determinarEstadoPeronsa(estadoRequest));
+        return ResponseEntity.ok().body(servicioEstado.determinarEstadoPersona(estadoRequest));
 
     }
 
